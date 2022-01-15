@@ -1,3 +1,5 @@
+package random_misc
+
 sealed class UiState {
     object Loading : UiState()
     data class Success(val successMessage: String) : UiState()
