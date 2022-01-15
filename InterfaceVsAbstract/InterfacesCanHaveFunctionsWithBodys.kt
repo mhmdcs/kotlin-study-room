@@ -10,6 +10,7 @@ Abstract classes have constructors
 * */
 
 //Demonstrating that interfaces can have functions with concrete bodies
+//Remember that classes marked with `interface` do not need to the `open` keyword modifier to be able to implement them
 interface Animal1 {
     fun makeVoice() {
         print("<${this::class.simpleName} voice>") //accessing class's name using class reference reflection

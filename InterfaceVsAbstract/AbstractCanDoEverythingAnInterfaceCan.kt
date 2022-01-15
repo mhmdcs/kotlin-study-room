@@ -1,11 +1,12 @@
 package InterfaceVsAbstract
 
 //Abstract classes can have everything that interfaces can, and additionally, they can have fields and constructors.
-//Therefore we can properly hold state in abstract classes
+//Therefore, we can properly hold state in abstract classes
 
-//Functions and properties with default bodies not only can be final but also they are final by default.
+//Functions and properties with default bodies are final by default in abstract classes.
 //We can also have a constructor and so pass values to this abstract class:
 
+//Remember that classes marked with `abstract` do not need to the `open` keyword modifier to be able to extend them
 abstract class Animal3(
     var name: String = "Default name",
     var type: String = "Default type"
@@ -32,7 +33,8 @@ fun main() {
 
 //Remember, we can implement multiple interfaces, and can only extend a single abstract class.
 //And we always have to call the constructor of the superclass (abstract class in this case).
-
+//Also Remember: We cannot instantiate abstract classes (i.e. create objects of an abstract class), while we can create objects of an interface.
+//The only and sole way to use an abstract class is via inheriting from it (extending it).
 abstract class A
 abstract class B
 interface I1

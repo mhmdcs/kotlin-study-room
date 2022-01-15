@@ -3,10 +3,13 @@ package InterfaceVsAbstract
 //Interfaces can have properties (and hold states through bad practice hacks), but without backing fields
 //more in this article here https://blog.kotlin-academy.com/abstract-class-vs-interface-in-kotlin-5ab8697c3a14
 
+//this article is also very excellent https://www.baeldung.com/kotlin/interfaces
+
 //Property in Kotlin represents an abstraction of getter (val) or getter and setter (var).
 //By default, they have fields used under the hood.
 
 //Properties are just accessors (getters and setters), and so they can be present on interfaces as long as they do not have any actual values:
+//Remember that classes marked with `interface` do not need to the `open` keyword modifier to be able to implement them
 interface Animal2 {
     val name: String
     val type: String
