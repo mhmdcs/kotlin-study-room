@@ -6,7 +6,7 @@ fun main() = runBlocking<Unit> {
         launch{
         val user = fetchUser() // fetch on IO thread
         showUser(user) // back on UI thread
-        println("Back on transformations.kotlin101.games.coroutines.main thread during coroutine -- Thread name: ${Thread.currentThread().name} Thread  id: ${Thread.currentThread().id}")
+        println("Back on transformations.kotlin101.games.coroutines.delegated_properties.main thread during coroutine -- Thread name: ${Thread.currentThread().name} Thread  id: ${Thread.currentThread().id}")
         }
     //"-- Thread name: ${Thread.currentThread().name} Thread  id: ${Thread.currentThread().id}"
     println("I need to be printed first! -- Thread name: ${Thread.currentThread().name} Thread  id: ${Thread.currentThread().id}")

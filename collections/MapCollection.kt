@@ -1,6 +1,9 @@
 package collections
 
-//"Map" data structure in Kotlin are called Dictionary in other languages, like C#.
+//"Map" key-value data structure in Kotlin are called Dictionary in other languages.
+//other names for key-value data structures are: Associative Arrays, Hash Tables, or Dictionary (like in C#)
+
+
 fun main(){
 
     //this is a List collection, it is an ordered collection of the same defined type, we can get its elements by their indices

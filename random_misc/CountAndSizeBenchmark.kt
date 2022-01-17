@@ -1,3 +1,5 @@
+package random_misc
+
 import kotlin.system.measureNanoTime
 
 // this program demonstrates how to create a benchmark test
