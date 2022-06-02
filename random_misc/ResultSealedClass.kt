@@ -1,21 +1,23 @@
 package random_misc
 
-sealed class UiState {
-    object Loading : UiState()
-    data class Success(val successMessage: String) : UiState()
-    data class Error(val errorMessage: Throwable?) : UiState()
+import java.io.IOException
+
+sealed class Result {
+    object Loading : Result()
+    data class Success(val successMessage: String) : Result()
+    data class Error(val errorMessage: Throwable?) : Result()
 }
 
-
-fun observeUiStates(uiState: UiState) = when(uiState) {
-    UiState.Loading -> println("Loading...Please wait.")
-    is UiState.Success -> println(uiState.successMessage)
-    is UiState.Error -> println(uiState.errorMessage)
+fun observeResult(result: Result) = when(result) {
+    Result.Loading -> println("Loading...Please wait.")
+    is Result.Success -> println(result.successMessage)
+    is Result.Error -> println(result.errorMessage)
 }
 
 fun main() {
-    observeUiStates(UiState.Loading)
-    observeUiStates(UiState.Success("The Ui has returned success state"))
+    observeResult(Result.Loading)
+    observeResult(Result.Success("The Ui has returned a successful result"))
+    //observeResult(Result.Error(IOException()))
 }
 
 

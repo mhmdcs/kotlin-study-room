@@ -13,25 +13,26 @@ package kotlin101
  *
  * The biggest feature is that since the primary constructor cannot contain any code, init blocks allow adding code to the primary constructor.
  * */
-        //this is the primary constructor
+        //this is the primary constructor, it gets executed first
 class Sample(var s : String) {
 
-    //this is the secondary constructor
+    //this is the secondary constructor, it gets executed last
     constructor(a: String, b: String): this(a) {
         this.s += b
     }
 
+    //this is init block, it gets executed immediately after primary constructor
     init {
         s += "C"
     }
 
-    //this is a property initializer
+    //this is a property initializer, it gets executed immediately after init blocks
     val alphabet = s
 }
 
 fun main(){
     val sample = Sample("A","B")
-    println(sample.s)//A in the primary constructor executed first, C in the init block executed immediately after, B in the secondary constructor executed last
+    println(sample.s) //A in the primary constructor executed first, C in the init block executed immediately after, B in the secondary constructor executed last
 
     println(sample.alphabet) //init blocks and property initializer are executed before the secondary constructor, thus B doesn't get printed here
 }
