@@ -1,4 +1,4 @@
-package coroutines
+package coroutines.misc_coroutines
 
 import kotlin.system.*
 import kotlinx.coroutines.*

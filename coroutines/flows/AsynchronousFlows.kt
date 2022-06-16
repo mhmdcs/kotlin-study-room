@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 fun main(){
 
     runBlocking{
-        // Flows are cold. If they were hot, they would've been immediately executed by just calling sendPrimes() function, but because they're cold, we need to collect them to execute them.
+        // Flows are cold. If they were hot, they would've been immediately executed by just calling sendPrimes() function, but because they're cold, we need to collect (consume) them first to execute them.
         val flow = sendPrimes()
         println("Flows not executed yet..")
         flow.collect{
