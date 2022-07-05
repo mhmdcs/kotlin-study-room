@@ -11,7 +11,7 @@ fun main() {
     println("Average time taken for filter size call: $filterSize")
 }
 
-//Run this benchmark algorithm 10 million times, this should hopefully account for any unrelated differences affected by what's going on in the JVM/System.
+//Run this benchmark algorithm 10 million times, this should hopefully account for any unrelated differences affected by what's going on in the JVM and the OS.
 fun benchmark(numbers: List<Int>, iterations: Int = 10_000_000): Pair<Long, Long> {
     var filterCount = 0L
     var filterSize = 0L

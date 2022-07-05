@@ -11,12 +11,12 @@ fun main() {
         val channel = Channel<Int>()
 
         launch {
-            for(x in 1..5)
-                channel.send(x*x)
+            for (x in 1..5)
+                channel.send(x * x)
             channel.close()
         }
 
-        for(x in 1..5)
+        for (x in 1..5)
             println(channel.receive())
 
 //        for(i in channel)

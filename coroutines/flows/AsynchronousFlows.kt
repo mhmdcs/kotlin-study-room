@@ -12,7 +12,7 @@ fun main(){
         val flow = sendPrimes()
         println("Flows not executed yet..")
         flow.collect{
-            println(it)
+            println(it) // the downstream
         }
         println("Flows executed after collecting them")
     }
@@ -23,6 +23,6 @@ fun sendPrimes(): Flow<Int> = flow {
     val primesList = listOf<Int>(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
     primesList.forEach {
         delay(it * 100L)
-        emit(it)
+        emit(it) // the upstream
     }
 }

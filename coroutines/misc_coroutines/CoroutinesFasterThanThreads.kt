@@ -40,4 +40,5 @@ fun creating100KCoroutines(){
 
 
 //Note that creation of coroutines is only faster than creation of threads when the quantity is high
-//if you test creating 10 coroutines and 10 threads, creation of threads would be faster.
+//in other words, if you test creating 10 coroutines and 10 threads, creation of threads would be faster.
+//which basically says, the more and more coroutines you have in your program, the greater the benefits reaped. Don't be shy of launching "too many" coroutines.

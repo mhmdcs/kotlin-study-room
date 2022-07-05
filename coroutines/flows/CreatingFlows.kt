@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 
+// DOWNSTREAMS:
 fun main (){
 
     runBlocking {
@@ -23,6 +24,8 @@ fun main (){
 
     }
 }
+
+// UPSTREAMS:
 
 // generating flows and emitting them the normal way
 fun sendNumbers() = flow() {
