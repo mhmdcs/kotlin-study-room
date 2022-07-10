@@ -1,9 +1,11 @@
 package functions
 
+// Higher-order functions are functions that take other functions as parameters, or return functions
+// The function that gets passed in as an argument is called a callback method
 fun main() {
     val items = listOf(1, 2, 3, 4, 5)
 
-    // Lambdas are code blocks enclosed in curly braces.
+    // Lambdas are code blocks enclosed in curly braces. They represent the callback functions to be implemented and passed inside the higher-order function. Fold() is the higher order function and thee lambda {} is the callback function that's being passed in.
     items.fold(0) {
         // When a lambda has parameters, they go first, followed by '->'
             acc: Int, i: Int ->
@@ -17,7 +19,7 @@ fun main() {
     // Parameter types in a lambda are optional if they can be inferred:
     val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
 
-    // Function references can also be used for higher-order function calls:
+    // "Function references" via the reflection operator double-colons :: can also be used for higher-order function calls:
     val product = items.fold(1, Int::times)
 
     println("joinedToString = $joinedToString")

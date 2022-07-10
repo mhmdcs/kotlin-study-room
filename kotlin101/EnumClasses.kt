@@ -4,7 +4,7 @@ package kotlin101
 //https://kotlinlang.org/docs/enum-classes.html
 
 //The most basic use case for enum classes is the implementation of type-safe enums
-//Each enum constant is an object. Enum constants are separated by commas.
+//Each enum constant is an object. Enum constants are separated by commas. You can add an optional comma after the last value, or a semicolon, as a treat!
 enum class Direction {
     NORTH, SOUTH, WEST, EAST
 }
