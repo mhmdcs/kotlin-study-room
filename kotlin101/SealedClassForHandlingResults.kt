@@ -1,7 +1,8 @@
-package random_misc
+package kotlin101
 
-import java.io.IOException
-
+//Sealed classes are, in a sense, similar to Enum classes. Each enum constant exists only as a single instance (they are implicitly static). Whereas a subclass of a sealed class can have multiple instances, each with their own state.
+//Sealed class is abstract by default i.e. it cannot be instantiated. Sealed classes can have abstract members.
+//A sealed class can have subclasses, but all of them must be declared in the same package as the sealed class itself. We usually define the subclasses inside the sealed class's body for clarity and readability.
 sealed class Result {
     object Loading : Result()
     data class Success(val successMessage: String) : Result()
