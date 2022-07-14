@@ -1,6 +1,20 @@
 package kotlin101
 
+//Jump statements are a type of Control Statements in programming languages used to interrupt the normal flow of the program.
+//It makes the program jump to another section of the program unconditionally when encountered. It can also be used to terminate any loop, and sometimes even terminate functions.
+//In C/C++ there are four jump statement: continue, break, return, and goto.
+//In Java there are three jump statements: break, continue, return. Java also has "labels" in place of "goto" for loops. It is still a reserved as a keyword just in case they wanted to add it to a later version.
+//In Kotlin there are three jump expressions: return, break, continue. Kotlin also has "labeled returns" in place of "goto".
+//In Kotlin: `return` by default returns from the nearest enclosing function or anonymous function. Which means that `return` exits the nearest current function.
+//In Kotlin: `break` terminates the nearest enclosing loop.
+//In Kotlin: `continue` proceeds to the next step of the nearest enclosing loop.
+
+//Labeled Returns
 //https://kotlinlang.org/docs/returns.html#return-to-labels
+
+//In short
+//`return` statement ends the execution of a function, and returns control to the calling function. Execution resumes as normal in the calling function at the point immediately following the call. A `return` statement can also return a value to the calling function.
+//When you read that "`return` statement returns from the current function" it just means "`return` statement exits the current function". Note: Always remember that lambdas are anonymous callback functions, that are passed inside higher-order functions :)
 
 /**Example A*/
 /**In Kotlin, functions can be nested using function literals, local functions, and object expressions.
