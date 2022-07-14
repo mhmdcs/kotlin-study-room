@@ -19,3 +19,6 @@ class myClass{
     }
 
 }
+
+//instance variables (or can be called object variable) are fields that belong to a particular instance of an object.
+//static variables (or can be called class variable) are common to all the instances of the same class. A static variable belongs to the whole class, and there is only one of it, regardless of the number of objects(instances). In Kotlin static variables/methods are declared inside a companion object inside a class.
