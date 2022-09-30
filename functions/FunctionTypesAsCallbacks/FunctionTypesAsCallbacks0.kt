@@ -13,7 +13,22 @@ class SomeClass {
 
 fun main() {
     val someClass = SomeClass()
+
     someClass.doSomething { // inside the lambda here, is the body of the callback function, this block of code be called back after everything inside doSomething() finishes executing, since we call it back at the end of doSomething()
         println("I observed doSomething() inside the SomeClass class and got called back")
     }
+
+    // alternatively
+    // store the function type inside a variable that you can later pass in
+    val callback = {
+        println("I observed doSomething() inside the SomeClass class and got called back")
+    }
+
+    // declare a named function that has no arguments and returns nothing i.e. a function that matches the type () -> Unit
+    fun callback2(){
+        println("I observed doSomething() inside the SomeClass class and got called back")
+    }
+
+//    someClass.doSomething(callback) // you can pass in a variable that stores the function type
+//    someClass.doSomething(::callback2) // you can pass in a named function as an argument with the :: function reference operator
 }
