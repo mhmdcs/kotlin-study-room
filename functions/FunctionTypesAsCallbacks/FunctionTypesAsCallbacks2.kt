@@ -1,6 +1,6 @@
-package functions
+package functions.FunctionTypesAsCallbacks
 
-// same exact thing as the FunctionTypesAsCallbacks file, but using the traditional functional interface as a callback instead of a function type
+// same exact thing as the FunctionTypesAsCallbacks1 file, but using the traditional functional interface as a callback instead of a function type
 
 class Observed2 {
     private lateinit var listener: Listener

@@ -1,4 +1,4 @@
-package functions
+package functions.FunctionTypesAsCallbacks
 
 // function types, like functional interfaces, can be used to create callbacks/listeners
 
