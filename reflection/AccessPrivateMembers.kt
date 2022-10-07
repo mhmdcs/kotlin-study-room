@@ -97,5 +97,5 @@ fun <T> Any.getPrivateField(name: String): T {
 // getFields() gives you access to all the public fields up the entire class hierarchy.
 // getDeclaredFields() gives you access to all the fields, regardless of their accessibility but only for the current class, not any base classes that the current class might be inheriting from.
 
-//getDeclaredMethods includes all methods declared by the class itself, whereas getMethods returns only public methods,
+//getDeclaredMethods includes all methods declared by the class itself, whereas getMethods() returns only public methods,
 // and also those inherited from the base/super class.
