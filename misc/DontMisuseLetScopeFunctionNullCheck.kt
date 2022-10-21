@@ -1,4 +1,4 @@
-package random_misc
+package misc
 
 // https://miro.medium.com/max/1400/1*i-Uo4RQDd6tNi2Mj8WSUoA.jpeg
 

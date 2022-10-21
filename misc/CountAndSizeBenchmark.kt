@@ -1,4 +1,4 @@
-package random_misc
+package misc
 
 import kotlin.system.measureNanoTime
 

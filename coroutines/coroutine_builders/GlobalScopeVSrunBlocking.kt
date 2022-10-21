@@ -6,7 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-//The main difference is that the runBlocking method blocks the current thread until it executes its entire code, while GlobalScope and coroutineScope just suspend the process, thus releasing the underlying thread for other usages until they can be resumed later.
+//The delegated_properties.main difference is that the runBlocking method blocks the current thread until it executes its entire code, while GlobalScope and coroutineScope just suspend the process, thus releasing the underlying thread for other usages until they can be resumed later.
 
 //delay() is suspending and non-blocking. Basically, delay() has the effect of "waiting" before executing the statement that follows it in the current coroutine. It is also non-blocking meaning that during this wait, the current thread can do something else. It is not like Thread.Sleep() which does block the current thread.
 

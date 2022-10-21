@@ -1,4 +1,4 @@
-package random_misc
+package misc
 
 //https://www.javatpoint.com/java-string-format
 //The % percentage sign called the "format operator" or "format specifier" is used to denote the data type and its output.

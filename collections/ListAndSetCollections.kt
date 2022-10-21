@@ -1,7 +1,7 @@
 package collections
 
 // List and Set both are interfaces. They both extends Collection interface.
-// In most programming languages, the main difference between List and Set is that Set is unordered and contains only unique elements,
+// In most programming languages, the delegated_properties.main difference between List and Set is that Set is unordered and contains only unique elements,
 // whereas the List is ordered and can contain the duplicate elements in it.
 
 // List is an ordered collection it maintains the insertion order, which means upon displaying the list content it will display the elements in the same order in which they got inserted into the list.
