@@ -20,7 +20,6 @@ class Team {
 
 class Hero(val specialtyOne: String, val specialtyTwo: String)
 
-
 fun main() {
     val team = Team() // despite us constructing an instance of ManuallyLazy class, its manuallyLazyHero property will never be initialized until we first access it in the following line.
     println(team.manuallyLazyHero.specialtyTwo)
@@ -32,7 +31,9 @@ fun main() {
     // Kotlin standard library already provides us with a lazy delegate.
     // The lazy() method accepts a lambda that serves as the property initializer.
     // Initialization is only performed on the first getValue() invocation.
-    // The same value that was created will be returned on successive calls to getValue().
+    // The same value that was created will be returned on successive calls to getValue(),
+    // this means that with lazy() initialization, the object to be lazily loaded is originally set to null, and on every request
+    // for the object, it checks for its nullability and creates it “on the fly” if it was null, and reuses the same previous instance if it wasn't null.
     // There are other benefits to using the lazy method other that boilerplate code reduction.
     // For instance, thread-synchronization is guaranteed as well, and can be configured to your liking.
 }
