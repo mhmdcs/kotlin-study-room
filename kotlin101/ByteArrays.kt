@@ -6,20 +6,20 @@ fun main() {
 
     println(byteArray.toHexString())
 
-    byteArray[0] = 127 // inserting a byte of 127 decimal to the 1st element in the array at index 0. 127 is equal to 0x7F Hexadecimal.
-    byteArray[1] = 23 // inserting a byte of 23 decimal to the 2nd element in the array at index 1. 23 is equal to 0x17 Hexadecimal.
+    byteArray[0] = 127 // inserting a byte of 127 decimal to the 1st element in the array at index 0. Decimal value 127 is equal to Hexadecimal value 0x7F.
+    byteArray[1] = 23 // inserting a byte of 23 decimal to the 2nd element in the array at index 1. Decimal value 23 is equal to Hexadecimal value 0x17.
 
     // a single signed byte (8 bits i.e. 8 slots of 0s and 1s) cannot hold an integer larger than 127 or less than -128, it's maximum number value is only from -128 to 127, for 256 numbers in total.
   //  byteArray[0] = 128 // compiler error, a signed byte cannot store a number more than 127
-    byteArray[4] = 127 // inserting a byte of 127 decimal to the 5th element in the array at index 4. 127 is equal to 0x7f Hexadecimal.
-    byteArray[3] = -128 // inserting a byte of -128 decimal to the 4th element in the array at index 3. -128 is equal to 0x80 Hexadecimal.
+    byteArray[4] = 127 // inserting a byte of 127 decimal to the 5th element in the array at index 4. Decimal value 127 is equal to Hexadecimal value 0x7f.
+    byteArray[3] = -128 // inserting a byte of -128 decimal to the 4th element in the array at index 3. Decimal value -128 is equal to Hexadecimal value 0x80.
   //  byteArray[0] = -129 // compiler error, a signed byte cannot store a number less than -128
 
     println(byteArray.toHexString())
 
-    val trimmedByteArray = byteArray.copyOfRange(0, 5) // Returns a new array which is a copy of the specified range of the original array. From index 0 (inclusive) to 5 (exclusive).
+    val trimmedByteArray = byteArray.copyOfRange(0, 5) // Returns a new array which is a copy of the specified range of the original array. From index 0 (inclusive) to index 5 (exclusive).
     println(trimmedByteArray.toHexString())
-    println(trimmedByteArray.toList()) // printing the ByteArray as a List that contains elements of the array
+    println(trimmedByteArray.toList()) // printing the ByteArray as a List that contains elements of the array in decimal.
 }
 
 fun byteArrayOfInts(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
