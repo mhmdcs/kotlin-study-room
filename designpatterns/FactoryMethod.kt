@@ -27,3 +27,4 @@ fun loadGame(notation: List<String>): List<Piece> {
 
 
 // the difference between Factory Method and Abstract Factory is that Factory Method has one factory method, while Abstract Factory has multiple factory methods within it.
+// in general, it's about abstracting what you return from the factory method, here we didn't specify whether we were returning a list of Pawns or a Queens, but instead we just returned a list of Pieces.
