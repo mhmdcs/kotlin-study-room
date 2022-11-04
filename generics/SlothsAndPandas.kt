@@ -1,6 +1,11 @@
 package generics
 
-open class Mammal(val name: String){
+// Generics in Kotlin: Covariance and Contravariance
+// watch this video:
+// https://www.youtube.com/watch?v=A7oPKEj1-Fg&ab_channel=KT
+
+open class
+Mammal(val name: String){
     fun sleep() {}
     fun eat() {}
 }
