@@ -74,5 +74,5 @@ You can assign an instance of List<Base> to a variable of type List<Derived>.
 
 ------------------
 
-In other words, covariance is the quality of being different by being more specific (Cat is covariant to Animal) while contravariance is the quality of being different by being more general (Animal is contravariant to Cat).
+In other words, covariance is the quality of being different by being more specific (Cat is covariant to Animal) while contravariance is the quality of being different by being more general (Animal is contravariant to Cat).e
  **/
