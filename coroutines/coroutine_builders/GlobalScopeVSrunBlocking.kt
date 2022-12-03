@@ -6,11 +6,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-//The delegated_properties.main difference is that the runBlocking method blocks the current thread until it executes its entire code, while GlobalScope and coroutineScope just suspend the process, thus releasing the underlying thread for other usages until they can be resumed later.
+//The main difference is that the runBlocking method blocks the current thread until it executes its entire code, while GlobalScope and coroutineScope just suspend the process, thus releasing the underlying thread for other usages until they can be resumed later.
 
 //delay() is suspending and non-blocking. Basically, delay() has the effect of "waiting" before executing the statement that follows it in the current coroutine. It is also non-blocking meaning that during this wait, the current thread can do something else. It is not like Thread.Sleep() which does block the current thread.
 
-//suspend functions are designed to block current coroutine, not the thread itself, it means that any and all suspend functions should and must run in a background thread. For example the delay() function blocks coroutine for a given time without blocking the current thread and later resumes the coroutine after a specified time you've set passes.
+//suspend functions are designed to block the current coroutine, not the thread itself, it means that any and all suspend functions should and must run concurrently. For example the delay() function blocks the coroutine for a given time without blocking the current thread, and later resumes the coroutine after a specified time you've set passes.
 
 fun main(){
    // globalScopeTest()
@@ -19,7 +19,7 @@ fun main(){
 
 fun globalScopeTest(){
 
-    //GlobalScope's lifecycle is tied to the entire application lifecycle, never use this in real apps. Instead, use lifecyleScope and viewmodelScope in Android application's activities/fragments and viewmodels respectively.
+    //GlobalScope's lifecycle is tied to the entire application lifecycle, never use this in real apps. Instead, use lifecycleScope and viewModelScope in Android application's activities/fragments and viewmodels respectively.
     GlobalScope.launch{
     println("Globalscope coroutine launched")
         delay(1000)

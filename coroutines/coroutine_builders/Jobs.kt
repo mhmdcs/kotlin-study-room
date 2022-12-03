@@ -1,9 +1,6 @@
 package coroutines.coroutine_builders
 
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main(){
     jobCancellation()
@@ -61,12 +58,12 @@ fun jobsHierarchy(){
            childJob.invokeOnCompletion{
                println("Child Job finished")
            }
-
         }
 
         parentJob.invokeOnCompletion{
             println("Parent Job finished")
         }
+        println("End of runBlocking scope")
     }
 }
 
@@ -76,18 +73,24 @@ fun jobCancellation(){
         val parentJob = launch {
             println("Parent job created")
 
-            val childJob = launch {
+            val childJob1 = launch {
                 println("Child Job created")
                 cancel()
                 delay(10_000) //won't get executed
                 println("The delay and this print function will never be executed since the Child Job got cancelled") //won't get executed
             }
-            childJob.invokeOnCompletion{
-                println("Child Job finished")
+
+            childJob1.invokeOnCompletion{
+                println("ChildJob1 finished")
             }
+
+            println("End of parentJob's launch scope")
         }
+
         parentJob.invokeOnCompletion{
             println("Parent Job finished")
         }
+
+        println("End of runBlocking scope")
     }
 }

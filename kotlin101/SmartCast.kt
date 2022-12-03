@@ -19,7 +19,7 @@ fun main() {
 
 //While using is or `!is` for checking the variable, the compiler tracks this information and internally
 //casts the variable to the target type. This is done inside the scope only if `is` or `!is` return true.
-//fun delegated_properties.main() {
+//funmain() {
 //    val obj: Any = "The variable obj of type Any will be automatically cast to a String inside the if-statement scope"
 //    if(obj is String) { // `is` keyword checks that a value has a certain type, so this says "if obj's value has a type of String, then do the following". While the `!is` keyword checks that a value does NOT have a certain type.
 //        // No Explicit Casting needed due to using `is`.

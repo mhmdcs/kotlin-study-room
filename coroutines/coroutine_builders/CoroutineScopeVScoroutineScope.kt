@@ -5,5 +5,5 @@ package coroutines.coroutine_builders
  *
  *
  * coroutineScope does not define its own dispatcher, so you inherit the dispatcher from coroutineScope's caller, keep this in mind
- * because if you call coroutineScope inside runBlocking or lifecycleScope and viewModelScope, then it uses uses the single thread it is called on, which is the main thread.
+ * because if you call coroutineScope {} inside runBlocking {} or lifecycleScope {} and viewModelScope {}, then it uses uses the single thread it is called on, which is the main thread.
  */

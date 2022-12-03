@@ -6,11 +6,12 @@ import kotlin.system.measureTimeMillis
 //https://www.youtube.com/watch?v=k_xRxXoimSw&ab_channel=CodePalace&loop=0
 //runBlocking and coroutineScope essentially do the same thing: they both wait for the body and all their children to complete before they move on.
 //runBlocking blocks the current thread while the code inside it executes. Whatever code you put inside runBlocking, it *has* to be executed.
-//coroutineScope suspends(unblocks) the current thread while the code inside it executes.
+//coroutineScope suspends (i.e. unblocks) the current coroutine while the code inside it executes.
 
 /***
- * runBlocking() and coroutineScope() are functionally very similar. They both pause the current execution waiting until the inner coroutine finishes.
- * The difference is that runBlocking() is meant to be executed from a regular non-suspendable code, so it waits by blocking and coroutineScope() is used from suspendable context, so it suspends.
+ * runBlocking() and coroutineScope() are functionally very similar. They both pause the current execution, waiting until their inner coroutine(s) finish.
+ * The difference is that runBlocking() is meant to be executed from a regular non-suspendable (blocking) code, so it waits by blocking the thread,
+ * while coroutineScope() is used from suspendable (non-blocking) context, so it waits by suspending the coroutine.
 
  * That difference makes them do much different things internally. runBlocking() has to first initialize the whole coroutines machinery before it could execute a suspendable lambda.
  * coroutineScope() has access to existing coroutine context, so it only schedules the inner lambda to be executed and suspends.
@@ -26,7 +27,8 @@ import kotlin.system.measureTimeMillis
  * As a result, your runBlocking() example uses single-threaded dispatcher while your coroutineScope() example uses multi-threaded Dispatchers.Default.
  * However, this difference should not really be taken into account when choosing between both methods. We can very easily switch dispatchers at any time.
 
-https://stackoverflow.com/a/72067310/9133569
+ * More details at:
+ * https://stackoverflow.com/a/72067310/9133569
  * **/
 
 private fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")

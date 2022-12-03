@@ -14,8 +14,8 @@ class Delegate {
 }
 
 class Example {
-    //this line says: property variable stringObject of type String is provided by a delegate named delegated_properties.Delegate()
-    //or another way to read it: the setters and getters of property variable stringObject of type String are delegated(i.e. given) by (function or object/instance) delegated_properties.Delegate()
+    //this line says: property variable stringObject of type String is provided by a delegate named Delegate()
+    //or another way to read it: the setters and getters of property variable stringObject of type String are delegated(i.e. given) by (function or object/instance) Delegate()
     var stringObject: String by Delegate()
     //stringObject is called "delegated property", and Delegate() is called the "delegate" or "property delegate".
 }

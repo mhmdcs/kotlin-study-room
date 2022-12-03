@@ -16,7 +16,7 @@ package kotlin101
 //`return` statement ends the execution of a function, and returns control to the calling function. Execution resumes as normal in the calling function at the point immediately following the call. A `return` statement can also return a value to the calling function.
 //When you read that "`return` statement returns from the current function" it just means "`return` statement exits the current function". Note: Always remember that lambdas are anonymous callback functions, that are passed inside higher-order functions :)
 
-/**delegated_properties.Example A*/
+/**Example A*/
 /**In Kotlin, functions can be nested using function literals, local functions, and object expressions.
  * Qualified `return`s allow us to return from an outer function. The most important use case is returning from a lambda expression.
  * Recall that when we write the following, the `return`-expression returns from the nearest enclosing function - `foo`:
@@ -29,11 +29,11 @@ package kotlin101
 //    }
 //    println("this point is unreachable")
 //}
-//fun delegated_properties.main() {
+//fun main() {
 //    foo()
 //}
 
-/**delegated_properties.Example B*/
+/**Example B*/
 /**To return from a lambda expression, label it and qualify the `return`*/
 /**Now, it returns only from the lambda expression.*/
 //fun foo() {
@@ -43,11 +43,11 @@ package kotlin101
 //    }
 //    print(" done with an explicit label")
 //}
-//fun delegated_properties.main() {
+//fun main() {
 //    foo()
 //}
 
-/**delegated_properties.Example C*/
+/**Example C*/
 /**Often it is more convenient to use implicit labels,
  *because such an implicit label has the same name as the function to which the lambda is passed into.*/
 //fun foo() {
@@ -57,11 +57,11 @@ package kotlin101
 //    }
 //    print(" done with implicit label")
 //}
-//fun delegated_properties.main() {
+//fun main() {
 //    foo()
 //}
 
-/**delegated_properties.Example D*/
+/**Example D*/
 /**Alternatively, you can replace the lambda expression with an anonymous function. A `return` statement in an anonymous function
  * will return from the anonymous function itself. This is unlike the first example where `return` returned directly to the caller of foo().
  */
@@ -72,7 +72,7 @@ package kotlin101
 //    })
 //    print(" done with anonymous function")
 //}
-//fun delegated_properties.main() {
+//fun main() {
 //    foo()
 //}
 /**Note that the use of local `return`s in the examples B,C,D is similar to the use of `continue` in regular loops.
@@ -83,7 +83,7 @@ package kotlin101
  * and non-locally returning from it:
  */
 
-/**delegated_properties.Example E*/
+/**Example E*/
 fun foo() {
     run nest@{
         listOf(1, 2, 3, 4, 5).forEach {
