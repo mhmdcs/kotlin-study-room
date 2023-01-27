@@ -17,6 +17,7 @@ fun main() {
         append("MyAttribute")
     }
     println(xmlMiniDSL)
+    println("\n\n------------\n\n")
 
     val xmlDSL = createAndroidLayout()
         .child("LinearLayout") {
@@ -75,13 +76,13 @@ open class XMLContainer {
     // Our container has only 1 function named child() that accepts as a last parameter a lambda with a receiver of type XMLChildContainer.
     // This means that our outermost container, XMLContainer, can only have children of type XMLChildContainer, nothing more. This is one of the benefits of internal DSLs. You can enforce specific rules to verify the correctness of the output.
     fun child(tag: String, action: XMLChildContainer.() -> Unit): XMLContainer {
-        data.append("<$tag")
+        data.append("<$tag ")
         val tagData = XMLChildContainer()
         tagData.action()
         data.append(tagData.attrData())
         data.append(">")
-        data.append(tagData.attrData())
-        data.append("\n<$tag>")
+        data.append(tagData.data())
+        data.append("\n</$tag>")
         return this
     }
 
@@ -93,7 +94,7 @@ class XMLChildContainer: XMLContainer() {
     fun attrData() = tagData.toString()
 
     fun attr(attrName: String, value: String) {
-        tagData.append("$attrName=\"$value\"")
+        tagData.append("\n$attrName=\"$value\"\n")
     }
 }
 
