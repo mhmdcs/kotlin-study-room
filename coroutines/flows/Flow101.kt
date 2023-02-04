@@ -35,9 +35,7 @@ fun main() {
         for (x in channel) println(x) // we process the elements in the channel
 
         val flow = foo2()
-        flow.collect {
-            println(it)
-        }
+        flow.collect { println(it) }
     }
 }
 
