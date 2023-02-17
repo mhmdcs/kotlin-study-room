@@ -1,9 +1,11 @@
 package coroutines.flows
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
 
@@ -13,7 +15,7 @@ import kotlin.system.measureTimeMillis
 //upstream
 fun dataSpikedFlow(): Flow<Int> {
     return flow {
-        for (i in 1..10){
+        for (i in 1..10) {
             delay(500) // data is being produced very fast
             emit(i)
         }
@@ -21,13 +23,13 @@ fun dataSpikedFlow(): Flow<Int> {
 }
 
 //downstream
-fun main(){
-    runBlocking{
+fun main() {
+    runBlocking {
         val time = measureTimeMillis {
-        dataSpikedFlow().buffer().collect{
-            delay(1000) // data is processed slowly with a 1 second delay
-            println("Value is  $it")
-        }
+            dataSpikedFlow().collect {
+                delay(1000) // data is processed slowly with a 1 second delay
+                println("Value is  $it")
+            }
         }
         println("collected in: $time ms") // Without the buffer operator, it takes 15~ seconds to collect. With the buffer, it only takes us 10~ seconds
     }
