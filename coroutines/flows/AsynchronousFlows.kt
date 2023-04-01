@@ -2,6 +2,7 @@ package coroutines.flows
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.cancellable
 import kotlinx.coroutines.flow.flow
 
@@ -15,10 +16,28 @@ fun main(){
         // Cold flows are created on-demand and emit data only when they’re being observed. Hot flows are always active and can emit data regardless of whether or not they’re being observed. Flows are cold. Whereas StateFlows, SharedFlows, and Channels are hot.
         val flow = sendPrimes()
         println("Flows not executed yet..")
-        flow.collect{
-            println(it) // the downstream
-        }
+        flow.collect(object: FlowCollector<Int> {
+            override suspend fun emit(value: Int) {
+                println(value) // the downstream
+            }
+        })
         println("Flows executed after collecting them")
+
+        // The signature (parameter) of the flow {}  builder uses a FlowCollector interface as a receiver, this helps us so we can emit directly from inside the body of the flow {} builder.
+        // Now you may ask, how do we even get that FlowCollector instance? What happens is that an instance of FlowCollector is created based on the lambda passed to collect {}, and this very instance is then passed to the flow {} body
+        /**
+        flow.collect {
+        println(it) // the downstream
+        }
+
+        is equal to:
+
+        flow.collect(object: FlowCollector<Int> {
+        override suspend fun emit(value: Int) {
+        println(value) // the downstream
+        }
+        })
+         **/
     }
 }
 
