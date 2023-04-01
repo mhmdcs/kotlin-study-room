@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
 
-// Backpressure refers to the situation where a system is receiving data at a higher rate than it can process during a temporary load spike.
-// In such cases, software engineers must handle back pressure gracefully.
+// Backpressure refers to the situation where a system is able to handle receiving data at a higher rate than it can process during a temporary load spike.
+// In such cases, software engineers must handle the implementation of back pressure gracefully.
 // Thankfully, Kotlin's flows support backpressure support automatically. If the flow emits values faster than it can be collected,
 // then it's not a problem, because collect() is slower than emit(), collector will always slow down the emitter, this is all possible thanks to the nature of suspending functions, which collect() is one.
 
