@@ -20,10 +20,10 @@ enum class Color(val rgb: Int) {
 }
 
 fun main(){
-    val blueColor = Color.BLUE
-    val redColor = Color.RED.ordinal
+    val redColor = Color.RED.rgb
+    val blueColor = Color.BLUE.ordinal
     val greenColor = Color.GREEN.name
-    println("Color.BLUE = $blueColor | Color.RED.ordinal = $redColor | Color.GREEN.name = $greenColor")
+    println("Color.BLUE.ordinal = $blueColor | Color.RED.rgb = $redColor | Color.GREEN.name = $greenColor")
 }
 
 //Every enum constant has properties for obtaining its name and position in the enum class declaration
