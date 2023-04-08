@@ -20,8 +20,15 @@ fun main() {
     val trimmedByteArray = byteArray.copyOfRange(0, 5) // Returns a new array which is a copy of the specified range of the original array. From index 0 (inclusive) to index 5 (exclusive).
     println(trimmedByteArray.toHexString())
     println(trimmedByteArray.toList()) // printing the ByteArray as a List that contains elements of the array in decimal.
+
+
+    // Creating a ByteArray from constant hexadecimals
+    byteArrayOf(0xA1.toByte(), 0x2E.toByte(), 0x38.toByte(), 0xD4.toByte(), 0x89.toByte(), 0xC3.toByte())
+    // better yet, we can use a function to achieve the same result in shorter, prettier code
+    val byteArr = byteArrayOfInts(0xA1, 0x2E, 0x38, 0xD4, 0x89, 0xC3)
 }
 
+// Function to create ByteArray from constant hexadecimals (pos means position)
 fun byteArrayOfInts(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
 
 
