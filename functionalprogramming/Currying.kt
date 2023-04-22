@@ -7,7 +7,7 @@ package functionalprogramming
  * It allows transforming a given function that takes multiple arguments into a sequence of functions, each having a single argument.
  * Each of the resulting functions handles one argument of the original (uncurried) function and returns another function.
  * So, currying is a way to translate a function that takes a number of arguments into a chain of functions that each take a single argument.
- * This may sound confusing, so let's look at a simple example:
+ * This may sound confusing, so let's look at an example to see how simple it really is:
  * **/
 
 fun main() {
