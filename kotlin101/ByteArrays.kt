@@ -26,6 +26,27 @@ fun main() {
     byteArrayOf(0xA1.toByte(), 0x2E.toByte(), 0x38.toByte(), 0xD4.toByte(), 0x89.toByte(), 0xC3.toByte())
     // better yet, we can use a function to achieve the same result in shorter, prettier code
     val byteArr = byteArrayOfInts(0xA1, 0x2E, 0x38, 0xD4, 0x89, 0xC3)
+
+
+    // appending elements to a byte array:
+    // ByteArray overloads the plus operator, so you can just add to the previous value directly with the + symbol:
+    var bytes = byteArrayOf(0b1111, 0b0011, 0b1111111, 0xf, 18.toByte())
+    bytes += 0b0001
+    println(bytes.toList())
+
+    // appending a new element to a byte array using plus() operator function directly:
+    val newBytes = bytes.plus(0x7F).toList()
+    println(newBytes)
+
+    // converting decimal to binary:
+    val binary = 255.toUInt().toString(radix = 2) // how to represent a decimal integer as binary
+    println(binary)
+    // how to represent a byte array's decimal elements as binaries
+    bytes.toList().map {
+        it.toString(radix = 2)
+    }.let {
+        println(it)
+    }
 }
 
 // Function to create ByteArray from constant hexadecimals (pos means position)
