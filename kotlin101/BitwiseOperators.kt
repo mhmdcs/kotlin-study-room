@@ -116,7 +116,15 @@ fun main() {
 
     // Unlike bitwise operators, actual multiplication and division might take more than one cycle.
 
-    //Then, there’s the ability to pack information really tightly, each bit meaning something specific. Then we can use a mask and an and() operator to check for this specific property:
+   /**
+    * A right shift (>> in C or shr in Kotlin) basically just moves the bits in the binary representation of a number to the right, effectively discarding the least significant bit(s), and adding zeros on the left.
+    * For unsigned integers, this operation is equivalent to integer division by 2 to the power of the shift amount.
+    *
+    * A left shift (<< in C or shl in Kotlin) basically just moves the bits to the left, discarding the most significant bit(s), and adding zeros on the right.
+    * This operation is equivalent to multiplying the number by 2 to the power of the shift amount.
+    * */
+
+    // Then, there’s the ability to pack information really tightly, each bit meaning something specific. Then we can use a mask and an and() operator to check for this specific property:
     val SKY_IS_BLUE_MASK = 0b00000000000001000000000000
 
     fun isSkyBlue(worldProperties: Int): Boolean =
