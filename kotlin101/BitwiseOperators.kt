@@ -139,6 +139,11 @@ fun main() {
         worldProperties and SKY_IS_BLUE_MASK != 0
 
     println(isSkyBlue(0b10011100111101011101010101))
+    // 0b10011100111101011101010101
+    // 0b00000000000001000000000000
+    // .......................... = AND operation
+    // 0b00000000000001000000000000
+    // so the output is not 0. Only if any value where the 13th bit was set to 0 was passed, the output will be 0.
 
     // Combining and parsing flags with OR and AND respectively:
 
