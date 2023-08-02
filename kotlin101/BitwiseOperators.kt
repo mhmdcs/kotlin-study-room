@@ -124,20 +124,37 @@ fun main() {
     * This operation is equivalent to multiplying the number by 2 to the power of the shift amount.
     * */
 
-    // Then, there’s the ability to pack information really tightly, each bit meaning something specific. Then we can use a mask and an and() operator to check for this specific property:
-    val SKY_IS_BLUE_MASK = 0b00000000000001000000000000
+   // We can use bitwise operations to combine and check validity of flags
+   // Each flag is typically defined as a power of 2, so it has exactly one '1' in its binary representation.
+   // By defining each flag with one unique bit set to 1, we ensure that no information is lost when we combine the flags using OR. Each bit in the combined value corresponds to a specific flag, so as long as the flags are defined correctly (i.e., each one with a unique bit set), they can be combined and later separated without ambiguity.
+   // So in essence, the bitwise OR operation allows you to pack multiple "yes/no" pieces of information (flags) into a single integer value, and then we use bitwise AND to unpack that information and see which flags are set. This is a highly efficient way to store and manipulate these flags, as it takes advantage of the underlying binary representation of integers in the computer's memory.
+   // Each flag must be a power of two so that it has exactly one '1' bit in its binary representation, and no two flags have that '1' bit in the same position.
+   // The number of possible unique flags with this method depends on the size of the integer used to store them. In Java and Kotlin, an Int is a 32-bit integer, so you can have up to 32 unique flags, each represented by one bit in the integer.
+   // If you needed more flags, you could use a larger data type like a Long, which is 64 bits in Java/Kotlin, allowing for up to 64 unique flags.
+
+    // We have the ability to pack information really tightly, each bit meaning something specific. Then we can use a mask and an and() operator to check for this specific property:
+    val SKY_IS_BLUE_MASK = 0b00000000000001000000000000 // 2^12 = 4096
 
     fun isSkyBlue(worldProperties: Int): Boolean =
         worldProperties and SKY_IS_BLUE_MASK != 0
 
     println(isSkyBlue(0b10011100111101011101010101))
 
+    // Combining and parsing flags with OR and AND respectively:
+
     // Now, with or(), we can combine various flags together:
-    val SKY_IS_BLUE = 0b00000000000001000000000000
+    val SKY_IS_BLUE = 0b00000000000001000000000000 // 2^12 = 4096
 
-    val SUN_IS_SHINING = 0b00000000000000100000000000
+    val SUN_IS_SHINING = 0b00000000000000100000000000 // 2^11 = 2048
 
-    val skyIsBlueAndSunShines = SKY_IS_BLUE or SUN_IS_SHINING // 0b00000000000001100000000000
+    val SKY_IS_CLOUDY = 0b00000000000000010000000000 // 2^10 = 1024
+
+    // A common technique in programming is to combine different flags (options) into a single integer value using OR bitwise operator, and then checking whether a flag was set or not using AND bitwise operator.
+    // The reason this works has to do with how integer values are represented in binary, and how the OR and AND operations work on binary digits.
+    val skyIsBlueAndSunShines = SKY_IS_BLUE or SUN_IS_SHINING // 0b00000000000001000000000000 OR 0b00000000000000100000000000 = 0b00000000000001100000000000 = 2^12 + 2^11 = 4096 + 2048 = 6144
+
+    val isSkyIsBlueFlagSet = skyIsBlueAndSunShines and SKY_IS_BLUE // 0b00000000000001100000000000 AND 0b00000000000001000000000000 = 0b00000000000001000000000000 = 2^12 = 4096
+    println(isSkyIsBlueFlagSet == SKY_IS_BLUE) // true
 
    // Bitwise operations are useful in signal processing, high-performance calculations,
    // and when you want to create tightly-packed data structures.
