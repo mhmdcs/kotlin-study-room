@@ -17,14 +17,6 @@ import kotlin.reflect.KProperty
 // But there's also another way to implement getValue() and setValue() other than calling the operator functions, there are predefined property delegate interfaces that we can use such as ReadOnlyProperty for val properties,
 // and ReadWriteProperty for var properties, which have getValue() and setValue() methods that we can override and implement, we can either implement the interfaces or the operator functions, both serve the same purpose.
 
-// Here, the responsibility of the initialization of the name property is delegated to an instance of the NamePropertyDelegate class.
-// Lets examine the NamePropertyDelegate class up close.
-fun main() {
-    // this line reads: delegated property `name` of type String's initialization will be provided by the property delegate NamePropertyDelegate object.
-    val name: String by NamePropertyDelegate()
-    println(name)
-}
-
 // NamePropertyDelegate class implements the ReadOnlyProperty interface. The ReadOnlyProperty interface overloads the getValue() operator method for us, so we wont have to define the operator keyword on our own.
 // getValue() has two parameters, an instance of the reference class in which the delegated property is defined. Here, it is a generic type so it can be usable for different classes.
 // The second parameter is of type KProperty. KProperty is a class that represents a Kotlin property. Here we won't care too much about these two parameters and we'll just return a String.
@@ -38,9 +30,19 @@ class NamePropertyDelegate<T> : ReadOnlyProperty<T, String> {
 //    operator fun getValue(thisRef: Any?, property: KProperty<*>): String = "Mohammed"
 //}
 
+// Here, the responsibility of the initialization of the name property is delegated to an instance of the NamePropertyDelegate class.
+fun main() {
+    // this line reads: delegated property `name` of type String's initialization will be provided by the property delegate NamePropertyDelegate object.
+    val name: String by NamePropertyDelegate()
+    println(name)
+
 // Kotlin also provides a read/write delegate that can execute a lambda when the setValue() method is invoked. This “observable” delegate is useful for cases such as data-binding and reactive programming. The syntax for this delegate is as follows:
-class ObservableDelegate {
-    var hero : Hero by Delegates.observable(initialValue = Hero("agility", "melee")) { property, oldValue, newValue ->
-        /* Do something here in this callback*/
+    //  Delegates.observable() Returns a property delegate for a read/write property, and it also calls a specified callback function block whenever the value changes.
+    var fighter : Fighter by Delegates.observable(initialValue = Fighter("agility", "melee")) { property, oldValue, newValue ->
+        // Do something here in this callback! Here, we observe whenever the value of the property changes!
+        println("onChange callback executed! \nproperty name is ${property.name} \noldValue is $oldValue \nnewValue is $newValue")
     }
+    fighter = Fighter("test one", "test two") // the callback will be executed
 }
+
+data class Fighter(val specialtyOne: String, val specialtyTwo: String)
