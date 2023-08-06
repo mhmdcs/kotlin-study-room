@@ -3,7 +3,7 @@ package delegates
 import kotlin.reflect.KProperty
 
 class Delegate {
-                //getter, 1st param is the object you read, 2nd param is the property description
+                //getter, 1st param is the object you read, 2nd param is the property description, the return type is the value being returned
     operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
         return "$thisRef, thank you for delegating '${property.name}' to me!"
     }
@@ -14,7 +14,7 @@ class Delegate {
 }
 
 class Example {
-    //this line says: property variable stringObject of type String is provided by a delegate named Delegate()
+    //this line says: the responsibility of initializing the property variable stringObject of type String is provided by the delegate object Delegate()
     //or another way to read it: the setters and getters of property variable stringObject of type String are delegated(i.e. given) by (function or object/instance) Delegate()
     var stringObject: String by Delegate()
     //stringObject is called "delegated property", and Delegate() is called the "delegate" or "property delegate".
