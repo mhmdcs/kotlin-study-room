@@ -52,3 +52,13 @@ class Person {
             field = value // 'field' refers to the backing field here
         }
 }
+
+// Note that if you have a custom getter without an initializer and without a custom setter,
+// there won't be a backing field, since there's no state to store. For example:
+class Student(val firstName: String, val lastName: String) {
+    val fullName: String
+        get() = "$firstName $lastName" // no backing field here, because there's no initializer and no set()!
+
+    // Here, fullName doesn't have a backing field, because it's computed from other properties and doesn't have a state of its own.
+    // Attempting to use the field keyword in this context would result in a compilation error.
+}
