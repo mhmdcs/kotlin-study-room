@@ -32,4 +32,22 @@ fun main(){
     val side = square.sideLength // indirectly accessing the field via Kotlin's auto-generated getter accessor
     square.sideLength = 5.0 // indirectly accessing the field via Kotlin's auto-generated setter accessor
 
+    val person = Person()
+    person.name
+    person.name = "Soso"
+    person.name
+}
+
+class Person {
+    // this basically how all properties in Kotlin are handled under the hood, they all have implicitly compiled getter and setter access methods
+    // represented by get() and set(value), where get() returns the field, and set(value) sets the value to the field.
+    var name: String = "Alice"
+        get() {
+            println("Getting name: $field")
+            return field
+        }
+        set(value) {
+            println("Setting name: $value")
+            field = value // 'field' refers to the backing field here
+        }
 }
