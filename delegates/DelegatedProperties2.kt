@@ -13,8 +13,9 @@ import kotlin.reflect.KProperty
 
 // To understand property delegation, understand that a property in Kotlin is composed of accessor methods and an optional backing field.
 // These methods, called get() and set(), are automatically generated for you if you do not override them.
-// To implement a property delegate, be aware that the get and set methods are mapped to the getValue() and setValue() operator functions
-// that need to be overloaded. Luckily for us, there are predefined property delegate interfaces that we can use such as ReadOnlyProperty for val, and ReadWriteProperty for var.
+// When implementing a property delegate, be aware that the aforementioned get() and set() methods are mapped to the getValue() and setValue() operator functions that we must call within our propery delegate.
+// But there's also another way to implement getValue() and setValue() other than calling the operator functions, there are predefined property delegate interfaces that we can use such as ReadOnlyProperty for val,
+// and ReadWriteProperty for var, which have getValue() and setValue() methods that we can override and implement, we can either implement the interfaces or the operator functions, both serve the same purpose.
 
 // The initialization of the name property is delegated to an instance of the NamePropertyDelegate class.
 // Lets examine the NameDelegate class up close.
