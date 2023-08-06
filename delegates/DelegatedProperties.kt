@@ -3,11 +3,11 @@ package delegates
 import kotlin.reflect.KProperty
 
 class Delegate {
-                //getter, 1st param is the object you read, 2nd param is the property description, the return type is the value being returned
+                //getter, 1st param is the object you read (the reference for the object of the class that owns the property), 2nd param is the property description, the return type is the value being returned
     operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
         return "$thisRef, thank you for delegating '${property.name}' to me!"
     }
-                //setter, 1st param is the object you read, 2nd param is the property description, 3rd param is the value being assigned
+                //setter, 1st param is the object you read (the owner of the property), 2nd param is the property description, 3rd param is the value being assigned
     operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
         println("$value has been assigned to '${property.name}' in $thisRef.")
     }
