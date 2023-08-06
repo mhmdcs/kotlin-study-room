@@ -41,6 +41,7 @@ fun main(){
 class Person {
     // this basically how all properties in Kotlin are handled under the hood, they all have implicitly compiled getter and setter access methods
     // represented by get() and set(value), where get() returns the field, and set(value) sets the value to the field.
+    // both methods use the field keyword to interact with the backing field that holds the actual value of the property in memory.
     var name: String = "Alice"
         get() {
             println("Getting name: $field")
