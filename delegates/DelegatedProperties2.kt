@@ -14,18 +14,18 @@ import kotlin.reflect.KProperty
 // To understand property delegation, understand that a property in Kotlin is composed of accessor methods and an optional backing field.
 // These methods, called get() and set(), are automatically generated for you if you do not override them.
 // When implementing a property delegate, be aware that the aforementioned get() and set() methods are mapped to the getValue() and setValue() operator functions that we must call within our propery delegate.
-// But there's also another way to implement getValue() and setValue() other than calling the operator functions, there are predefined property delegate interfaces that we can use such as ReadOnlyProperty for val,
-// and ReadWriteProperty for var, which have getValue() and setValue() methods that we can override and implement, we can either implement the interfaces or the operator functions, both serve the same purpose.
+// But there's also another way to implement getValue() and setValue() other than calling the operator functions, there are predefined property delegate interfaces that we can use such as ReadOnlyProperty for val properties,
+// and ReadWriteProperty for var properties, which have getValue() and setValue() methods that we can override and implement, we can either implement the interfaces or the operator functions, both serve the same purpose.
 
-// The initialization of the name property is delegated to an instance of the NamePropertyDelegate class.
-// Lets examine the NameDelegate class up close.
+// Here, the responsibility of the initialization of the name property is delegated to an instance of the NamePropertyDelegate class.
+// Lets examine the NamePropertyDelegate class up close.
 fun main() {
-    // this line reads: delegated property name of type String initialized by property delegate NamePropertyDelegate object.
+    // this line reads: delegated property `name` of type String's initialization will be provided by the property delegate NamePropertyDelegate object.
     val name: String by NamePropertyDelegate()
     println(name)
 }
 
-// NameDelegate class implements the ReadOnlyProperty interface. The ReadOnlyProperty interface overloads the getValue() operator method for us, so we wont have to define the operator keyword on our own.
+// NamePropertyDelegate class implements the ReadOnlyProperty interface. The ReadOnlyProperty interface overloads the getValue() operator method for us, so we wont have to define the operator keyword on our own.
 // getValue() has two parameters, an instance of the reference class in which the delegated property is defined. Here, it is a generic type so it can be usable for different classes.
 // The second parameter is of type KProperty. KProperty is a class that represents a Kotlin property. Here we won't care too much about these two parameters and we'll just return a String.
 // Notice that the custom delegate has no backing field. If you want to store the current value, you have to define a backing field explicitly. Our example does not need a backing field because the getValue() is delegated to a String "Mohammed".
