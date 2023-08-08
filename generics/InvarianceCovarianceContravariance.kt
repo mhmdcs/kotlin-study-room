@@ -5,7 +5,7 @@ open class Animal // supertype
 
 data class Cat(var name: String = "Kitty"): Animal() // subtype
 
-//class Cage<Type> // invariance
+class Cage<Type> // invariance
 
 class Box<out Type>(val content: Type) // covariance
 
