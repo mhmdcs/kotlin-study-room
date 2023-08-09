@@ -36,8 +36,7 @@ inline fun <reified T> calculate(value: Float): T {
     return when (T::class) {
         Float::class -> value as T
         Int::class -> value.toInt() as T
-        else -> throw IllegalStateException(
-            "Only works with Float and Int")
+        else -> throw IllegalStateException("Only works with Float and Int")
     }
 }
 
