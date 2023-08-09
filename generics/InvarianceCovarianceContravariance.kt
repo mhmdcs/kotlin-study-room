@@ -80,3 +80,29 @@ To declare a class to be contravariant on a type parameter we use the keyword `i
 In other words, covariance is the quality of being different by being more specific (Cat is covariant to Animal), while contravariance is the quality of being different by being more general (Animal is contravariant to Cat).
  *
  * **/
+
+
+/**
+Invariance:
+- Invariance is the default behavior.
+- You can neither assign a subtype nor a supertype of T to a Box<T>.
+- Example: If you have class Box<T>, Box<Any> is not a supertype of Box<String>, and you cannot assign Box<String> to a variable of type Box<Any>.
+
+Covariance:
+- Covariance is marked with the `out` keyword and allows reading values of type T or its subtypes.
+- You can assign a subtype of T to a Box<out T>, but you cannot modify the contents (you can't write or set T).
+- It's safe to read from a covariant type because you know that you'll always get at least a T (or a subtype).
+- Example: If you have class Box<out T>, Box<Any> is a supertype of Box<String>, and you can assign Box<String> to a variable of type Box<Any>.
+
+Contravariance:
+- Contravariance is marked with the `in` keyword and allows writing values of type T or its supertypes.
+- You can assign a supertype of T to a Box<in T>, but you cannot read the contents (you can't read or get T).
+- It's safe to write to a contravariant type because you know that you're always writing at least a T (or a supertype).
+- Example: With abstract class Serializer<in T>, Serializer<Animal> is a subtype of Serializer<Cat>, so you can assign Serializer<Animal> to a variable of type Serializer<Cat>.
+
+
+Covariant (out): You can read T or its subtypes. Subtyping is preserved.
+Contravariant (in): You can write T or its supertypes. Subtyping is reversed.
+Invariant: You can read and write T, but no subtyping or supertyping is allowed.
+
+ * **/
