@@ -16,14 +16,14 @@ abstract class Serializer<in Type> { // contravariance
 fun main() {
     val animalBox: Box<Animal>
     val catBox: Box<Cat> = Box<Cat>(Cat())
-    animalBox = catBox // a subtype object can be assigned to a supertype variable thanks to covariance
+    animalBox = catBox // an object of a subtype can be assigned to a variable of a supertype thanks to covariance - the subtyping is preserved - out, producer, reading from generic parameters.
     println(animalBox.content)
 
     val catSerializer: Serializer<Cat>
     val animalSerializer: Serializer<Animal> = object: Serializer<Animal>() {
         override fun serialize(t: Animal) = println("{ \"name\": \"$t\" }")
     }
-    catSerializer = animalSerializer // a supertype object can be assigned to a subtype variable thanks to contravariance
+    catSerializer = animalSerializer // an object of a supertype can be assigned to a variable of a subtype thanks to contravariance - the subtyping is inversed - in, consumer, writing to generic parameters.
     catSerializer.serialize(Cat("Kat"))
 }
 
