@@ -33,9 +33,9 @@ fun main() {
  * Kotlin supports declaration-site variance of type parameters of generic classes using `out` and `in` modifiers, to allow them to be covariant, contravariant, or invariant if no modifier are used.
  * The use of variance in the type system allows us to make intuitive connections between complex types.
  *
- * class Foo<out A> // A covariant class
- * class Bar<in A> // A contravariant class
- * class Baz<A>  // An invariant class
+ * class Box<out A> // A covariant class
+ * class Box<in A> // A contravariant class
+ * class Box<A>  // An invariant class
  *
  * Invariance
  * By default, type parameters in Kotlin are invariant: subtyping relationships between the type parameters aren’t reflected in the parameterized type.
@@ -49,10 +49,10 @@ fun main() {
 
 /**
  *
-A covariance is a generic class where the subtyping is preserved.
-A contravariance is a generic class where the subtyping is inversed.
+Covariance is a generic type where the subtyping is preserved.
+Contravariance is a generic type where the subtyping is inversed.
 
-Making a type parameter a covariant type makes it possible to be able to read values even when the supplied type doesn't match the one in the type parameter in the variable or function definition.
+Making a type parameter a covariant type makes it possible to be able to read values even when the supplied type doesn't match the one in the type parameter in the class variable, or function definition.
 
 Making a type parameter a contravariant type makes it possible to be able to pass values as function arguments even when the type arguments don't match the ones in the type parameter in the function definition.
 
