@@ -4,14 +4,14 @@ package generics
 
 fun main() {
     // consider this code:
-    val elements1: MutableList<Any> // MutableList<E> (invariance! we're limited to ONLY List objects of specifically and only type Any!)
+    val elements1: MutableList<Any> // defined as MutableList<E> (invariance! we're limited to ONLY List objects of specifically and only type Any!)
     val strings1: MutableList<String> = mutableListOf("Some", "Random", "Stuff")
-//    elements1 = strings1 // compile error
+//    elements1 = strings1 // compile error, the subtyping is not preserved in invariance.
 
 // but this code:
-    val elements2: List<Any> // List<out E> (covariance! we can pass List objects with a subtype of Any, like MutableList<String> or List<String>!)
+    val elements2: List<Any> // defined as List<out E> (covariance! we can pass List objects with a subtype of Any, like MutableList<String> or List<String>!)
     val strings2: MutableList<String> = mutableListOf("Some", "Random", "Stuff")
-    elements2 = strings2 // successfully compiles
+    elements2 = strings2 // successfully compiles, the subtyping is preserved in covariance.
 // This is possible because List interface is a covariant generic class defined as List<out T> :)
 // Thus now you can assign an instance of MutableList<String> to a variable of type List<Any>
 
