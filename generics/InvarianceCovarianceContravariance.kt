@@ -106,3 +106,27 @@ Contravariant (in): You can write T or its supertypes. Subtyping is reversed.
 Invariant: You can read and write T, but no subtyping or supertyping is allowed.
 
  * **/
+
+/**
+Read-only data types (sources) can be covariant (out); write-only data types (sinks) can be contravariant (in).
+Mutable data types which act as both sources and sinks (i.e. can be both read from and written to) should be invariant.
+
+Consider the generic Box we defined earlier along with the Animal superclass and Cat subclass.
+For the type Animal, we can make the type Box<Animal>, which is a "box of animals", or Box<Cat>,  which is a "box of Cats".
+An invariant Box is defined as Box<T>, a covariant box is defined as Box <out T>, and a contravariant Box is defined as Box<in T>.
+
+We have the option to treat the type of Box as either:
+
+- Covariant Box<out T>: a Box<Cat> is a Box<Animal> (subtyping is preserved).
+
+- Contravariant Box<in T>: a Box<Animal> is a Box<Cat> (subtyping is reversed).
+
+- Invariant Box<T>: a Box<Animal> is not a Box<Cat>, and a Box<Cat> is not a Box<Animal>; neither Box<Cat> nor Box<Animal> is a subtype of the other, a Box<Animal> can only be a Box<Animal>.
+
+If we wish to avoid type errors, then only the third choice (invariance) is safe due to its strictness and constrainess on the type.
+
+Clearly, covariance isn't safe, a Box<Cat> cannot be treated as an Box<Animal>. It should always be possible to put a Box<Dog> into an Box<Animal>. With covariant boxes, this cannot be guaranteed to be safe, since the backing store might actually be an box of cats. The covariant rule is not safe, the box constructor should be invariant.
+Note that this is only an issue for mutable boxes; the covariant rule is only safe for immutable (read-only) boxes.
+
+Conversely, contravariance isn't safe either; not every Box<Animal> can be treated as if it were a Box<Cat>, since a client reading from the box will expect a Cat, but an Box<Animal> may contain e.g. a Dog. So the contravariant rule is not safe for reading. The contravariant rule is only safe for write-only boxes.
+ * **/
