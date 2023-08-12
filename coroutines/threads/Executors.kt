@@ -4,8 +4,8 @@ import kotlinx.coroutines.ExecutorCoroutineDispatcher
 import kotlinx.coroutines.asCoroutineDispatcher
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import kotlin.concurrent.thread
 
+// Executor and ExecutorService are higher-level abstractions over Threads that provide a more convenient and powerful way to manage and control concurrent execution.
 private val executorService: ExecutorService = Executors.newFixedThreadPool(5) // Creates an ExecutorService with a fixed-size thread pool with five threads using Java's ExecutorService class, we can convert it into a CoroutineDispatcher via asCoroutineDispatcher()
 private val executorServiceCoroutineDispatcher: ExecutorCoroutineDispatcher = executorService.asCoroutineDispatcher() // ExecutorCoroutineDispatcher implements CoroutineDispatcher implements ContinuationInterceptor which implements Element which implements CoroutineContext
 // we could later (if we wanted) supply executorServiceCoroutineDispatcher to the constructor of a CoroutineScope since executorServiceCoroutineDispatcher is a CoroutineContext.
@@ -19,6 +19,14 @@ fun main() {
     }
     println("calling the runnable..")
     executorService.execute(runnable) // or you could also call threadPool.submit(runnable) instead
+
+    executorService.execute {
+        // execute another Runnable task
+    }
+
+    executorService.submit {
+        // execute ANOTHER Runnable task
+    }
 
     // difference between execute() and submit()
     // execute() runs the task and forget about it, it is like Coroutines' launch() builder.
@@ -35,6 +43,7 @@ fun main() {
  * The operating system does the context switching between threads as well — in order to emulate parallelism. A simplistic view is that the more threads we spawn, the less time each thread spends doing actual work.
 
  * The Thread Pool pattern helps to save resources in a multithreaded application and to contain the parallelism in certain predefined limits.
+ * We use Java's Executor to create thread pools since it's the standard way to create and manage thread pools in Java, and while you can create a thread pool class manually using just Thread, Queue and List objects, doing so would require a significant amount of custom code to manage the lifecycle, synchronization, task queuing, and other concerns that are handled automatically by the executor framework.
 
  * When we use a thread pool, we write our concurrent code in the form of parallel tasks and submit them for execution to an instance of a thread pool. This instance controls several re-used threads for executing these tasks.
  * **/
